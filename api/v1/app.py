@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 import os
 from api.v1.views import app_views
@@ -20,6 +20,12 @@ port = os.getenv('HBNG-API_PORT', 5000)
 def teardown(exception=None):
     """Teardown for app"""
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found(error):
+    """Handle 404, not found"""
+    return jsonify({'error': 'Not Found'}), 404
 
 
 if __name__ == "__main__":
