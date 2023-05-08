@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 """
 Index page of the server
+
+Routes:
+    /status: Get status of the server
+    /stas: Get the number of each object by type
 """
 
 from flask import jsonify
