@@ -73,7 +73,7 @@ class FileStorage:
         """
         Retrieves a single object based on the obj name and id
         """
-        if cls and id:
+        if cls & id:
             fetch = "{}.{}".format(cls, id)
             all_obj = self.all(cls)
             return (all_obj.get(fetch))
@@ -85,4 +85,3 @@ class FileStorage:
         Returns the count of all objects in storage
         """
         return (len(self.all(cls)))
-
