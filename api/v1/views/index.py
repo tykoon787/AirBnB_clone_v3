@@ -17,7 +17,7 @@ def status():
     """Returns the status
 
     Returns:
-        JSON: Status in JSON Format 
+        JSON: Status in JSON Format
     """
     return jsonify({'status': 'OK'})
 
