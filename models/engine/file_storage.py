@@ -73,7 +73,7 @@ class FileStorage:
         """
         Retrieves a single object based on the obj name and id
         """
-        if cls & id:
+        if cls and id:
             fetch = "{}.{}".format(cls, id)
             all_obj = self.all(cls)
             return (all_obj.get(fetch))
