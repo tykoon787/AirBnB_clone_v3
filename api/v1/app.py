@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Serves the flask application
+"""
 
 from flask import Flask, jsonify
 from models import storage
