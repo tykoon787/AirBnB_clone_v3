@@ -8,12 +8,14 @@ Routes:
 """
 
 from flask import jsonify
-from api.v1.views import app_views
-from models import storage
+import api.v1.views as apv
+# from api.v1.views import app_views
+import models as m
+# from models import storage
 
 
 if __name__ == "__main__":
-    @app_views.route('/status', methods=['GET'], strict_slashes=False)
+    @apv.app_views.route('/status', methods=['GET'], strict_slashes=False)
     def status():
         """Returns the status
 
@@ -23,7 +25,7 @@ if __name__ == "__main__":
         return jsonify({'status': 'OK'})
 
 
-    @app_views.route('/stats', methods=['GET'], strict_slashes=False)
+    @apv.app_views.route('/stats', methods=['GET'], strict_slashes=False)
     def stats():
         """Returns the count of all class objects"""
         objects: dict = {}
@@ -36,5 +38,5 @@ if __name__ == "__main__":
             "User": "users"
         }
         for key, value in classes.items():
-            objects[value] = storage.count(key)
+            objects[value] = m.storage.count(key)
         return jsonify(objects)

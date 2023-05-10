@@ -4,14 +4,16 @@ Serves the flask application
 """
 
 from flask import Flask, jsonify
-from models import storage
+import models as m
+# from models import storage
 import os
-from api.v1.views import app_views
+import api.v1.views as apv
+# from api.v1.views import app_views
 
 app = Flask(__name__)
 
 # Blueprint of app_views
-app.register_blueprint(app_views)
+app.register_blueprint(apv.app_views)
 
 
 # Server environment config
@@ -22,7 +24,7 @@ port = os.getenv('HBNG-API_PORT', 5000)
 @app.teardown_appcontext
 def teardown(exception=None):
     """Teardown for app"""
-    storage.close()
+    m.storage.close()
 
 
 @app.errorhandler(404)
